@@ -30,9 +30,11 @@ import {
   Cake,
   Check as Cheese,
 } from "lucide-react"
-import { Canvas } from "@react-three/fiber"
-import { Float } from "@react-three/drei"
+// import { Canvas } from "@react-three/fiber"
+// import { Float } from "@react-three/drei"
 
+// Componentes 3D comentados temporalmente para evitar errores de dependencias
+/*
 function Canape() {
   return (
     <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.3}>
@@ -134,6 +136,7 @@ function FloatingFoodScene() {
     </Canvas>
   )
 }
+*/
 
 export default function HHCateringLanding() {
   const [isVisible, setIsVisible] = useState(false)
@@ -182,10 +185,39 @@ export default function HHCateringLanding() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => setFormSubmitted(false), 3000)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setFormSubmitted(true)
+        // Limpiar el formulario
+        setFormData({
+          nombre: "",
+          email: "",
+          telefono: "",
+          tipoEvento: "",
+          fechaEvento: "",
+          numeroPersonas: "",
+          mensaje: "",
+        })
+        setTimeout(() => setFormSubmitted(false), 5000)
+      } else {
+        console.error('Error enviando el formulario')
+        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -197,7 +229,7 @@ export default function HHCateringLanding() {
 
   const openWhatsApp = () => {
     const message = `Hola! Me interesa el servicio de catering de H&H. Mi nombre es ${formData.nombre || "[Nombre]"} y necesito catering para ${formData.numeroPersonas || "[número]"} personas.`
-    const whatsappUrl = `https://wa.me/56912345678?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/56990722315?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
 
@@ -261,9 +293,10 @@ export default function HHCateringLanding() {
           <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-tr from-secondary/10 via-transparent to-transparent"></div>
         </div>
 
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        {/* Componente 3D comentado temporalmente */}
+        {/* <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
           <FloatingFoodScene />
-        </div>
+        </div> */}
 
         <div className="container mx-auto px-4 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -1304,19 +1337,11 @@ export default function HHCateringLanding() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Teléfono</div>
-                      <div className="text-muted-foreground">+56 9 1234 5678</div>
+                      <div className="text-muted-foreground">+56 9 9072 2315</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Email</div>
-                      <div className="text-muted-foreground">contacto@hhcatering.cl</div>
-                    </div>
-                  </div>
+               
 
                   <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:shadow-lg transition-shadow duration-300">
                     <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
@@ -1324,7 +1349,7 @@ export default function HHCateringLanding() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Ubicación</div>
-                      <div className="text-muted-foreground">Santiago, Chile</div>
+                      <div className="text-muted-foreground">La Florida Santiago, Chile</div>
                     </div>
                   </div>
 
@@ -1365,7 +1390,7 @@ export default function HHCateringLanding() {
                     <div className="text-center py-12">
                       <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                       <h3 className="text-2xl font-bold text-green-600 mb-2">¡Mensaje Enviado!</h3>
-                      <p className="text-muted-foreground">Te contactaremos pronto para coordinar tu evento.</p>
+                      <p className="text-muted-foreground">Hemos recibido tu consulta y te contactaremos pronto para coordinar tu evento.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -1405,7 +1430,7 @@ export default function HHCateringLanding() {
                             value={formData.telefono}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-                            placeholder="+56 9 1234 5678"
+                            placeholder="+56 9 9072 2315"
                           />
                         </div>
                         <div>
