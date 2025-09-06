@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Optimización para Docker/Coolify
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: undefined,
+  },
 }
 
 export default nextConfig
