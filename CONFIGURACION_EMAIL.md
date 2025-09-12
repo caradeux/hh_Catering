@@ -24,14 +24,14 @@ Para que el formulario de contacto funcione correctamente, necesitas configurar 
 
 Crea un archivo `.env.local` en la raíz del proyecto con:
 
-```
+\`\`\`
 RESEND_API_KEY=tu_api_key_de_resend_aqui
-```
+\`\`\`
 
 **Ejemplo:**
-```
+\`\`\`
 RESEND_API_KEY=re_1234567890abcdef
-```
+\`\`\`
 
 ### 4. Información de Contacto Actualizada
 
