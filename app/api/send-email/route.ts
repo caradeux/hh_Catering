@@ -61,14 +61,14 @@ export async function POST(request: NextRequest) {
       </div>
     `
 
-    // Enviar el email
-    const { data, error } = await resend.emails.send({
-      from: 'H&H Catering <noreply@hhcatering.cl>',
-      to: ['cateringhh77@gmail.com'],
-      subject: `Nueva Consulta de Catering - ${nombre}`,
-      html: emailContent,
-      replyTo: email,
-    })
+                // Enviar el email
+                const { data, error } = await resend.emails.send({
+                  from: 'H&H Catering <onboarding@resend.dev>',
+                  to: ['cateringhh77@gmail.com'],
+                  subject: `Nueva Consulta de Catering - ${nombre}`,
+                  html: emailContent,
+                  replyTo: email,
+                })
 
     if (error) {
       console.error('Error enviando email:', error)
