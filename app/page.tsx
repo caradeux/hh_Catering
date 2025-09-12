@@ -30,11 +30,9 @@ import {
   Cake,
   Check as Cheese,
 } from "lucide-react"
-// import { Canvas } from "@react-three/fiber"
-// import { Float } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import { Float } from "@react-three/drei"
 
-// Componentes 3D comentados temporalmente para evitar errores de dependencias
-/*
 function Canape() {
   return (
     <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.3}>
@@ -136,7 +134,6 @@ function FloatingFoodScene() {
     </Canvas>
   )
 }
-*/
 
 export default function HHCateringLanding() {
   const [isVisible, setIsVisible] = useState(false)
@@ -185,39 +182,10 @@ export default function HHCateringLanding() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setFormSubmitted(true)
-        // Limpiar el formulario
-        setFormData({
-          nombre: "",
-          email: "",
-          telefono: "",
-          tipoEvento: "",
-          fechaEvento: "",
-          numeroPersonas: "",
-          mensaje: "",
-        })
-        setTimeout(() => setFormSubmitted(false), 5000)
-      } else {
-        console.error('Error enviando el formulario')
-        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
-    }
+    setFormSubmitted(true)
+    setTimeout(() => setFormSubmitted(false), 3000)
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -229,7 +197,7 @@ export default function HHCateringLanding() {
 
   const openWhatsApp = () => {
     const message = `Hola! Me interesa el servicio de catering de H&H. Mi nombre es ${formData.nombre || "[Nombre]"} y necesito catering para ${formData.numeroPersonas || "[número]"} personas.`
-    const whatsappUrl = `https://wa.me/56990722315?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/56912345678?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
 
@@ -293,10 +261,9 @@ export default function HHCateringLanding() {
           <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-tr from-secondary/10 via-transparent to-transparent"></div>
         </div>
 
-        {/* Componente 3D comentado temporalmente */}
-        {/* <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
           <FloatingFoodScene />
-        </div> */}
+        </div>
 
         <div className="container mx-auto px-4 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -311,16 +278,16 @@ export default function HHCateringLanding() {
                   ✨ Especialistas en Catering Gourmet Premium
                 </Badge>
                 <h1 className="text-5xl lg:text-7xl font-bold text-balance leading-tight">
-                  Catering Gourmet para
+                  Catering Gourmet Premium para
                   <span className="text-primary bg-gradient-to-r from-primary via-secondary to-emerald-500 bg-clip-text text-transparent animate-pulse">
                     {" "}
-                    Momentos Especiales
+                    Eventos y Matrimonios
                   </span>
                 </h1>
                 <p className="text-xl text-muted-foreground text-pretty leading-relaxed max-w-lg">
                   Transformamos tus eventos y matrimonios en experiencias gastronómicas inolvidables con nuestro
-                  servicio de catering premium: canapés gourmet, pizzetas artesanales, empanadas de cóctel, mini quiches
-                  y tapaditos especiales preparados con ingredientes de primera calidad.
+                  servicio de catering gourmet premium: canapés artesanales, pizzetas gourmet, empanadas de cóctel, mini
+                  quiches y tapaditos especiales preparados con ingredientes de primera calidad en Chile.
                 </p>
               </div>
 
@@ -396,11 +363,12 @@ export default function HHCateringLanding() {
               Nuestros Servicios Premium
             </Badge>
             <h2 className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Servicios de Catering de Excelencia
+              Servicios de Catering Gourmet Premium
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-              Ofrecemos servicios completos de catering gourmet con atención personalizada para hacer de tu evento una
-              experiencia gastronómica memorable y sofisticada
+              Ofrecemos servicios completos de catering gourmet con atención personalizada para matrimonios, eventos
+              corporativos y celebraciones especiales, creando experiencias gastronómicas memorables y sofisticadas en
+              toda Chile
             </p>
           </div>
 
@@ -409,9 +377,9 @@ export default function HHCateringLanding() {
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-3xl"></div>
               <CardHeader className="relative">
                 <ChefHat className="h-16 w-16 text-primary mb-6 group-hover:animate-bounce transition-all duration-300" />
-                <CardTitle className="text-2xl text-card-foreground">Catering Gourmet</CardTitle>
+                <CardTitle className="text-2xl text-card-foreground">Catering Gourmet Premium</CardTitle>
                 <CardDescription className="text-lg">
-                  Canapés, tapaditos y productos artesanales preparados con ingredientes premium seleccionados
+                  Productos artesanales de alta calidad para eventos y matrimonios exclusivos
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -541,11 +509,11 @@ export default function HHCateringLanding() {
               Catálogo Premium
             </Badge>
             <h2 className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Productos Gourmet Artesanales
+              Catálogo de Productos Gourmet Artesanales
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-              Descubre nuestra amplia variedad de productos gastronómicos artesanales, preparados con ingredientes
-              frescos seleccionados y técnicas culinarias de vanguardia
+              Descubre nuestra amplia variedad de productos gastronómicos artesanales para catering, preparados con
+              ingredientes frescos seleccionados y técnicas culinarias de vanguardia para eventos y matrimonios en Chile
             </p>
           </div>
 
@@ -558,8 +526,8 @@ export default function HHCateringLanding() {
               <Card className="bg-gradient-to-br from-white to-cyan-50/50 border-2 border-primary/20 hover:border-primary/40 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
                 <div className="aspect-video overflow-hidden relative">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Canap%C3%A9%20Fino_Pan%20de%20molde%20con%20mayonesa%20o%20ricotta_%E2%80%A2%20Camar%C3%B3n%2C%20salm%C3%B3n%20ahumado_%E2%80%A2%20Huevo%20de%20codorniz%2C%20jam%C3%B3n%20serrano_%E2%80%A2%20Alcachofa%2C%20champi%C3%B1%C3%B3n%20con%20almendras_%E2%80%A2%20Pavo%20palta%2C%203%20quesos%2C%20pastrami.jpg-vWmTam1aoYPla8DmpEqEOu7J6iXoLe.jpeg"
-                    alt="Canapé Fino - Pan de molde con ingredientes premium"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Canap%C3%A9%20Fino_Pan%20de%20molde%20con%20mayonesa%20o%20ricotta_%E2%80%A2%20Camar%C3%B3n%2C%20salm%C3%B3n%20ahumado_%E2%80%A2%20Huevo%20de%20codorniz%2C%20jam%C3%B3n%20serrano_%E2%80%A2%20Alcachofa%2C%20champi%C3%B1%C3%B1%C3%B3n%20con%20almendras_%E2%80%A2%20Pavo%20palta%2C%203%20quesos%2C%20pastrami.jpg-vWmTam1aoYPla8DmpEqEOu7J6iXoLe.jpeg"
+                    alt="Canapé Fino H&H Catering - Pan de molde gourmet con camarón, salmón ahumado, huevo de codorniz y jamón serrano para eventos"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -725,7 +693,7 @@ export default function HHCateringLanding() {
                 <div className="aspect-video overflow-hidden relative">
                   <img
                     src="/tapaditos-coctel-pan-frica.jpg"
-                    alt="Tapadito Cóctel - Pan frica con ingredientes gourmet"
+                    alt="Tapadito Cóctel H&H Catering - Pan frica artesanal con ingredientes gourmet para eventos y matrimonios"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -836,7 +804,7 @@ export default function HHCateringLanding() {
                 <div className="aspect-video overflow-hidden relative">
                   <img
                     src="/brochetas-variadas-gourmet.jpg"
-                    alt="Brochetas de Verduras - Vegetales frescos asados"
+                    alt="Brochetas Gourmet H&H Catering - Vegetales frescos asados y carnes premium para catering de eventos"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1154,10 +1122,10 @@ export default function HHCateringLanding() {
               Nuestra Historia
             </Badge>
             <h2 className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Pasión por la Excelencia Gastronómica
+              H&H Catering - Pasión por la Excelencia Gastronómica
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-              Conoce nuestra trayectoria de más de 15 años creando experiencias culinarias memorables
+              Conoce nuestra trayectoria creando experiencias culinarias memorables para eventos y matrimonios en Chile
             </p>
           </div>
 
@@ -1169,12 +1137,6 @@ export default function HHCateringLanding() {
                   alt="Equipo de catering profesional H&H"
                   className="w-full h-full object-cover"
                 />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">15+</div>
-                  <div className="text-sm text-muted-foreground">Años de experiencia</div>
-                </div>
               </div>
             </div>
 
@@ -1215,22 +1177,6 @@ export default function HHCateringLanding() {
                 ingredientes de primera calidad y técnicas culinarias de vanguardia.
               </p>
             </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { number: "500+", label: "Eventos Realizados" },
-              { number: "50+", label: "Productos Gourmet" },
-              { number: "100%", label: "Satisfacción Garantizada" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-muted-foreground font-medium">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -1337,11 +1283,19 @@ export default function HHCateringLanding() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Teléfono</div>
-                      <div className="text-muted-foreground">+56 9 9072 2315</div>
+                      <div className="text-muted-foreground">+56 9 1234 5678</div>
                     </div>
                   </div>
 
-               
+                  <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                      <Mail className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">Email</div>
+                      <div className="text-muted-foreground">contacto@hhcatering.cl</div>
+                    </div>
+                  </div>
 
                   <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:shadow-lg transition-shadow duration-300">
                     <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
@@ -1349,7 +1303,7 @@ export default function HHCateringLanding() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Ubicación</div>
-                      <div className="text-muted-foreground">La Florida Santiago, Chile</div>
+                      <div className="text-muted-foreground">Santiago, Chile</div>
                     </div>
                   </div>
 
@@ -1390,7 +1344,7 @@ export default function HHCateringLanding() {
                     <div className="text-center py-12">
                       <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                       <h3 className="text-2xl font-bold text-green-600 mb-2">¡Mensaje Enviado!</h3>
-                      <p className="text-muted-foreground">Hemos recibido tu consulta y te contactaremos pronto para coordinar tu evento.</p>
+                      <p className="text-muted-foreground">Te contactaremos pronto para coordinar tu evento.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -1430,7 +1384,7 @@ export default function HHCateringLanding() {
                             value={formData.telefono}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-                            placeholder="+56 9 9072 2315"
+                            placeholder="+56 9 1234 5678"
                           />
                         </div>
                         <div>
