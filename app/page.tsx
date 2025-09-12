@@ -102,10 +102,41 @@ export default function HHCateringLanding() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => setFormSubmitted(false), 3000)
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setFormSubmitted(true)
+        // Limpiar el formulario después del envío exitoso
+        setFormData({
+          nombre: "",
+          email: "",
+          telefono: "",
+          tipoEvento: "",
+          fechaEvento: "",
+          numeroPersonas: "",
+          mensaje: "",
+        })
+        setTimeout(() => setFormSubmitted(false), 5000)
+      } else {
+        console.error('Error enviando email:', result.error)
+        alert(`Error al enviar el mensaje: ${result.error}`)
+      }
+    } catch (error) {
+      console.error('Error en el envío:', error)
+      alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
