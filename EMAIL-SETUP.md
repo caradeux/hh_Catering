@@ -31,8 +31,8 @@ Para que los correos se envíen correctamente, necesitas:
    - Configura los registros DNS requeridos
 
 2. **Configurar el email de origen**:
-   - El código usa `noreply@hhcatering.cl` como email de origen
-   - Asegúrate de que este dominio esté verificado en Resend
+   - **Actualmente**: El código usa `onboarding@resend.dev` (dominio verificado de Resend)
+   - **Para usar dominio personalizado**: Cambia a `noreply@hhcatering.cl` una vez verificado el dominio
 
 ### Troubleshooting
 
@@ -40,8 +40,9 @@ Para que los correos se envíen correctamente, necesitas:
 - Verifica que la API key esté correctamente configurada en Coolify
 - Asegúrate de que la API key tenga permisos de envío
 
-#### Error: "Domain not verified"
-- Verifica que `hhcatering.cl` esté agregado y verificado en Resend
+#### Error: "Domain not verified" (403)
+- **Solución temporal**: El sistema ahora usa `onboarding@resend.dev` (dominio verificado)
+- **Solución permanente**: Verifica `hhcatering.cl` en Resend y cambia el remitente
 - Revisa que los registros DNS estén configurados correctamente
 
 #### Error: "Rate limit exceeded"
