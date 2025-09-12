@@ -11,7 +11,7 @@ WORKDIR /app
 COPY package.json package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f package-lock.json ]; then npm ci --legacy-peer-deps; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -28,7 +28,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
   if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f package-lock.json ]; then npm run build --legacy-peer-deps; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
