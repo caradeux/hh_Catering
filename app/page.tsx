@@ -30,108 +30,28 @@ import {
   Cake,
   Check as Cheese,
 } from "lucide-react"
-import { Canvas } from "@react-three/fiber"
-import { Float } from "@react-three/drei"
-
-function Canape() {
-  return (
-    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.3}>
-      <group>
-        <mesh position={[0, 0, 0]}>
-          <cylinderGeometry args={[0.3, 0.3, 0.1, 16]} />
-          <meshStandardMaterial color="#d97706" />
-        </mesh>
-        <mesh position={[0, 0.15, 0]}>
-          <sphereGeometry args={[0.2, 16, 16]} />
-          <meshStandardMaterial color="#dc2626" />
-        </mesh>
-        <mesh position={[0, 0.3, 0]}>
-          <sphereGeometry args={[0.05, 8, 8]} />
-          <meshStandardMaterial color="#16a34a" />
-        </mesh>
-      </group>
-    </Float>
-  )
-}
-
-function Empanada() {
-  return (
-    <Float speed={1.8} rotationIntensity={0.4} floatIntensity={0.4}>
-      <group>
-        <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 6]}>
-          <coneGeometry args={[0.4, 0.3, 6]} />
-          <meshStandardMaterial color="#f59e0b" />
-        </mesh>
-        <mesh position={[0, 0.1, 0]} rotation={[0, 0, Math.PI / 6]}>
-          <coneGeometry args={[0.35, 0.25, 6]} />
-          <meshStandardMaterial color="#fbbf24" />
-        </mesh>
-      </group>
-    </Float>
-  )
-}
-
-function MiniQuiche() {
-  return (
-    <Float speed={1.3} rotationIntensity={0.2} floatIntensity={0.3}>
-      <group>
-        <mesh position={[0, 0, 0]}>
-          <cylinderGeometry args={[0.25, 0.3, 0.15, 12]} />
-          <meshStandardMaterial color="#92400e" />
-        </mesh>
-        <mesh position={[0, 0.1, 0]}>
-          <cylinderGeometry args={[0.22, 0.22, 0.1, 12]} />
-          <meshStandardMaterial color="#fef3c7" />
-        </mesh>
-        <mesh position={[0, 0.15, 0]}>
-          <sphereGeometry args={[0.08, 8, 8]} />
-          <meshStandardMaterial color="#16a34a" />
-        </mesh>
-      </group>
-    </Float>
-  )
-}
-
-function Pizzeta() {
-  return (
-    <Float speed={1.6} rotationIntensity={0.3} floatIntensity={0.4}>
-      <group>
-        <mesh position={[0, 0, 0]}>
-          <cylinderGeometry args={[0.4, 0.4, 0.05, 16]} />
-          <meshStandardMaterial color="#d97706" />
-        </mesh>
-        <mesh position={[0, 0.05, 0]}>
-          <cylinderGeometry args={[0.35, 0.35, 0.03, 16]} />
-          <meshStandardMaterial color="#dc2626" />
-        </mesh>
-        <mesh position={[0, 0.08, 0]}>
-          <cylinderGeometry args={[0.3, 0.3, 0.02, 16]} />
-          <meshStandardMaterial color="#fbbf24" />
-        </mesh>
-      </group>
-    </Float>
-  )
-}
+// Temporarily disabled Three.js components due to dependency conflicts
+// import { Canvas } from "@react-three/fiber"
+// import { Float } from "@react-three/drei"
 
 function FloatingFoodScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-      <ambientLight intensity={0.6} />
-      <pointLight position={[10, 10, 10]} intensity={0.8} />
-      <Canape />
-      <group position={[3, -2, 0]}>
-        <Empanada />
-      </group>
-      <group position={[-3, 1, 0]}>
-        <MiniQuiche />
-      </group>
-      <group position={[2, 3, 0]}>
-        <Pizzeta />
-      </group>
-      <group position={[-2, -3, 0]}>
-        <Empanada />
-      </group>
-    </Canvas>
+    <div className="w-full h-full relative overflow-hidden">
+      {/* Elementos decorativos flotantes */}
+      <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-primary/20 rounded-full animate-bounce delay-1000"></div>
+      <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-secondary/30 rounded-full animate-bounce delay-2000"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-emerald-300/20 rounded-full animate-bounce delay-3000"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-7 h-7 bg-orange-300/25 rounded-full animate-bounce delay-4000"></div>
+      
+      {/* Elementos decorativos con formas de comida */}
+      <div className="absolute top-1/2 left-1/6 w-12 h-8 bg-yellow-300/30 rounded-full animate-pulse delay-500"></div>
+      <div className="absolute top-2/3 right-1/6 w-10 h-6 bg-red-300/25 rounded-full animate-pulse delay-1000"></div>
+      <div className="absolute bottom-1/2 left-1/2 w-8 h-12 bg-green-300/20 rounded-full animate-pulse delay-1500"></div>
+      
+      {/* Gradientes decorativos */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-radial from-primary/10 to-transparent rounded-full blur-xl"></div>
+      <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-radial from-secondary/15 to-transparent rounded-full blur-xl"></div>
+    </div>
   )
 }
 
@@ -202,7 +122,7 @@ export default function HHCateringLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+    <main className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <div className="fixed inset-0 -z-10">
         {/* Base gradient con más profundidad */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-cyan-50/40"></div>
@@ -225,7 +145,8 @@ export default function HHCateringLanding() {
         <div className="absolute bottom-40 left-20 w-5 h-5 bg-emerald-300/20 rounded-full animate-bounce delay-1500"></div>
       </div>
 
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200/60 z-50 shadow-lg">
+      <header>
+        <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200/60 z-50 shadow-lg" role="navigation" aria-label="Navegación principal">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -251,10 +172,11 @@ export default function HHCateringLanding() {
             </Button>
           </div>
         </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Hero Section mejorado */}
-      <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-title">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-white/98 via-cyan-50/60 to-emerald-50/40"></div>
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary/8 via-transparent to-transparent"></div>
@@ -277,7 +199,7 @@ export default function HHCateringLanding() {
                 >
                   ✨ Especialistas en Catering Gourmet Premium
                 </Badge>
-                <h1 className="text-5xl lg:text-7xl font-bold text-balance leading-tight">
+                <h1 id="hero-title" className="text-5xl lg:text-7xl font-bold text-balance leading-tight">
                   Catering Gourmet Premium para
                   <span className="text-primary bg-gradient-to-r from-primary via-secondary to-emerald-500 bg-clip-text text-transparent animate-pulse">
                     {" "}
@@ -292,14 +214,6 @@ export default function HHCateringLanding() {
               </div>
 
               <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span>+15 años experiencia</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span>+500 eventos realizados</span>
-                </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-green-500" />
                   <span>Ingredientes premium</span>
@@ -330,17 +244,17 @@ export default function HHCateringLanding() {
             <div
               className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
             >
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 transform hover:scale-105 transition-transform duration-500 shadow-2xl hover:shadow-3xl">
+              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 transform hover:scale-105 transition-transform duration-500 shadow-2xl hover:shadow-3xl ring-2 ring-white/20">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Canap%C3%A9%20Fino_Pan%20de%20molde%20con%20mayonesa%20o%20ricotta_%E2%80%A2%20Camar%C3%B3n%2C%20salm%C3%B3n%20ahumado_%E2%80%A2%20Huevo%20de%20codorniz%2C%20jam%C3%B3n%20serrano_%E2%80%A2%20Alcachofa%2C%20champi%C3%B1%C3%B3n%20con%20almendras_%E2%80%A2%20Pavo%20palta%2C%203%20quesos%2C%20pastrami.jpg-vWmTam1aoYPla8DmpEqEOu7J6iXoLe.jpeg"
-                  alt="Servicio de catering H&H con canapés gourmet y productos especiales"
+                  src="/elegant-catering-spread-with-canapes-and-cocktails.jpg"
+                  alt="H&H Catering - Servicio profesional de catering gourmet con canapés finos, camarón, salmón ahumado, jamón serrano y productos premium para eventos y matrimonios en Chile"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-gray-800">
-                      <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-5 shadow-lg border border-white/20">
+                    <div className="flex items-center gap-3 text-base font-bold text-gray-800">
+                      <Star className="h-5 w-5 text-yellow-500 fill-current" />
                       <span>Calidad Premium Garantizada</span>
                     </div>
                   </div>
@@ -351,7 +265,7 @@ export default function HHCateringLanding() {
         </div>
       </section>
 
-      <section id="servicios" className="py-24 relative">
+      <section id="servicios" className="py-24 relative" aria-labelledby="servicios-title">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-slate-50/90 via-white to-slate-50/90"></div>
           <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent"></div>
@@ -362,7 +276,7 @@ export default function HHCateringLanding() {
             <Badge variant="outline" className="mb-6 text-lg px-6 py-2">
               Nuestros Servicios Premium
             </Badge>
-            <h2 className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <h2 id="servicios-title" className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               Servicios de Catering Gourmet Premium
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
@@ -497,7 +411,7 @@ export default function HHCateringLanding() {
       </section>
 
       {/* Productos Section - manteniendo la estructura existente pero con mejoras visuales */}
-      <section id="productos" className="py-24 relative">
+      <section id="productos" className="py-24 relative" aria-labelledby="productos-title">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-cyan-25/20 to-white"></div>
           <div className="absolute top-1/3 left-0 w-full h-1/3 bg-gradient-to-r from-transparent via-primary/3 to-transparent"></div>
@@ -508,7 +422,7 @@ export default function HHCateringLanding() {
             <Badge variant="outline" className="mb-6 text-lg px-6 py-2">
               Catálogo Premium
             </Badge>
-            <h2 className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <h2 id="productos-title" className="text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               Catálogo de Productos Gourmet Artesanales
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
@@ -820,7 +734,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-red-50/50 border-2 border-red-300/30 hover:border-red-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-red-50/50 border-2 border-red-300/30 hover:border-red-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/gourmet-tapaditos-elegant-presentation.jpg"
+                    alt="Brocheta Tomatito Cherry y Queso - Queso de cabra fresco con tomate cherry y albahaca fresca para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Cherry className="h-5 w-5 text-red-500" />
@@ -832,7 +754,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-orange-50/50 border-2 border-orange-300/30 hover:border-orange-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-orange-50/50 border-2 border-orange-300/30 hover:border-orange-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/professional-catering-team-preparing-gourmet-canapes.jpg"
+                    alt="Brocheta Teriyaki - Pechuga de pollo tierna con salsa teriyaki agridulce japonesa para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Utensils className="h-5 w-5 text-orange-500" />
@@ -846,7 +776,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-pink-50/50 border-2 border-pink-300/30 hover:border-pink-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-pink-50/50 border-2 border-pink-300/30 hover:border-pink-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/elegant-catering-spread-with-canapes-and-cocktails.jpg"
+                    alt="Brocheta Camarón - 3 camarones ecuatorianos frescos con cebollín, salteados en mantequilla y ajo para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Fish className="h-5 w-5 text-pink-500" />
@@ -860,7 +798,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-red-50/50 border-2 border-red-300/30 hover:border-red-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-red-50/50 border-2 border-red-300/30 hover:border-red-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/professional-bartender-team-preparing-cocktails-in.jpg"
+                    alt="Brocheta Vacuno - Lomo liso premium con pimentón y cebolla fresca para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Beef className="h-5 w-5 text-red-500" />
@@ -874,7 +820,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-yellow-50/50 border-2 border-yellow-300/30 hover:border-yellow-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-yellow-50/50 border-2 border-yellow-300/30 hover:border-yellow-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/elegant-cocktail-bar-setup-with-professional-barte.jpg"
+                    alt="Brocheta Pollo - Pollo tierno con pimentón y cebolla fresca para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Drumstick className="h-5 w-5 text-yellow-600" />
@@ -920,7 +874,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-orange-50/50 border-2 border-orange-300/30 hover:border-orange-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-orange-50/50 border-2 border-orange-300/30 hover:border-orange-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/cocktail-empanadas-golden-baked.jpg"
+                    alt="Empanadita Especial - Masa de empanadas tradicional con pino, jamón queso y champiñón para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Utensils className="h-5 w-5 text-orange-500" />
@@ -937,7 +899,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-purple-50/50 border-2 border-purple-300/30 hover:border-purple-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-purple-50/50 border-2 border-purple-300/30 hover:border-purple-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/mini-quiches-assorted-flavors.jpg"
+                    alt="Rollitos de Jamón - Jamón premium con ricotta y ciboulette, queso crema para catering gourmet"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Sandwich className="h-5 w-5 text-purple-500" />
@@ -1090,7 +1060,15 @@ export default function HHCateringLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-green-50/50 border-2 border-green-300/30 hover:border-green-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-white to-green-50/50 border-2 border-green-300/30 hover:border-green-400/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 group overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src="/premium-cocktail-selection.jpg"
+                    alt="Vol au Vent & Petit Bouché - Masa de hoja y tacitas delgadas con rellenos gourmet para catering premium"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Utensils className="h-5 w-5 text-green-500" />
@@ -1144,7 +1122,7 @@ export default function HHCateringLanding() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold">Nuestra Misión</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Somos una empresa familiar con más de 15 años de experiencia en el rubro del catering gourmet. Nos
+                  Somos una empresa familiar especializada en el rubro del catering gourmet. Nos
                   especializamos en crear experiencias gastronómicas únicas que transforman cada evento en un momento
                   inolvidable.
                 </p>
@@ -1462,7 +1440,7 @@ export default function HHCateringLanding() {
         </div>
       </section>
 
-      <footer className="relative py-12 text-center border-t border-slate-200/60">
+      <footer className="relative py-12 text-center border-t border-slate-200/60" role="contentinfo">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-50/80 via-white to-slate-50/80"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -1496,6 +1474,6 @@ export default function HHCateringLanding() {
           <ArrowUp className="h-5 w-5" />
         </Button>
       )}
-    </div>
+    </main>
   )
 }

@@ -1,0 +1,52 @@
+{
+  "name": "H&H Catering - SEO Optimized",
+  "description": "Servicio profesional de catering gourmet para eventos, matrimonios y celebraciones en Chile",
+  "keywords": [
+    "catering gourmet",
+    "catering matrimonios",
+    "catering eventos",
+    "canapés gourmet",
+    "pizzetas artesanales",
+    "empanadas cóctel",
+    "mini quiches",
+    "tapaditos",
+    "catering Chile",
+    "servicio catering premium",
+    "H&H Catering",
+    "catering Santiago",
+    "catering corporativo",
+    "brochetas gourmet",
+    "pastelería gourmet"
+  ],
+  "business": {
+    "name": "H&H Catering",
+    "type": "Catering Service",
+    "address": "Santiago, Chile",
+    "phone": "+56 9 1234 5678",
+    "email": "contacto@hhcatering.cl",
+    "website": "https://hhcatering.cl",
+    "hours": "Lunes a Viernes de 9:00 a 18:00",
+    "serviceArea": "Chile",
+    "cuisine": "Gourmet",
+    "priceRange": "$$"
+  },
+  "seo": {
+    "title": "H&H Catering - Catering Gourmet para Eventos y Matrimonios en Chile",
+    "description": "Servicio profesional de catering gourmet para eventos, matrimonios y celebraciones. Canapés, pizzetas, empanadas de cóctel, mini quiches y tapaditos artesanales. Más de 500 eventos realizados con ingredientes premium.",
+    "canonical": "https://hhcatering.cl",
+    "language": "es",
+    "locale": "es_CL",
+    "robots": "index, follow",
+    "googlebot": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+  },
+  "social": {
+    "facebook": "https://facebook.com/hhcatering",
+    "instagram": "https://instagram.com/hhcatering",
+    "whatsapp": "https://wa.me/56912345678"
+  },
+  "analytics": {
+    "googleAnalytics": "G-XXXXXXXXXX",
+    "googleTagManager": "GTM-XXXXXXX",
+    "facebookPixel": "XXXXXXXXXXXXXXX"
+  }
+}
